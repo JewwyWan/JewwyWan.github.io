@@ -709,6 +709,19 @@
   gap: var(--sp-4);
   margin-bottom: var(--sp-6);
 }
+
+/* 页面级语言切换：与首页的语言偏好共用 localStorage */
+.page-lang { position: relative; z-index: 20; }
+.page-lang-btn {
+  min-height: 30px; padding: 5px 9px; display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid var(--line2); border-radius: var(--r-pill); background: transparent;
+  color: var(--sub); font: 500 .72rem var(--sans); cursor: pointer;
+}
+.page-lang-btn:hover, .page-lang-btn:focus-visible { border-color: var(--accent); color: var(--accent); }
+.page-lang-dropdown { position: absolute; top: calc(100% + 8px); right: 0; min-width: 106px; padding: 5px; display: none; border: 1px solid var(--line2); border-radius: 10px; background: var(--surface); box-shadow: 0 14px 34px rgba(20, 40, 70, .16); }
+.page-lang-dropdown.open { display: grid; }
+.page-lang-dropdown button { border: 0; border-radius: 7px; padding: 8px 9px; background: transparent; color: var(--sub); text-align: left; font: .75rem var(--sans); cursor: pointer; }
+.page-lang-dropdown button:hover, .page-lang-dropdown button.active { background: var(--accent-soft); color: var(--accent); }
 .contact-card {
   display: flex;
   align-items: center;
@@ -756,7 +769,7 @@
   font-size: .68rem;
   text-transform: uppercase;
   letter-spacing: .14em;
-  color: var(--faint);
+  color: rgba(226, 233, 244, .78);
   margin-bottom: 4px;
 }
 .cc-value {
@@ -770,7 +783,7 @@
   flex-shrink: 0;
   width: 18px;
   height: 18px;
-  color: var(--faint);
+  color: rgba(226, 233, 244, .70);
   transition: color var(--t) var(--ease), transform var(--t) var(--ease);
 }
 .contact-card:hover .cc-arrow {
@@ -805,7 +818,7 @@
 .qr-label {
   font-family: var(--mono);
   font-size: .72rem;
-  color: var(--faint);
+  color: var(--sub);
   text-transform: uppercase;
   letter-spacing: .14em;
 }
@@ -817,10 +830,6 @@
   border-radius: var(--r-sm);
   background: #fff;
   padding: 8px;
-}
-.qr-img-portrait {
-  max-width: 260px;
-  padding: 0;
 }
 .qr-name {
   font-family: var(--mono);

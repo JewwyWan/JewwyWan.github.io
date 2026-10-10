@@ -14,6 +14,8 @@
 - sites.html：Paddi 开发的站点目录
 - ecosystem.html：Paddi Ecosystem
 
+站点目录当前收录 6 个经实测可访问的公开入口：个人主页、Paddi 产品页、Paddi 生态官网、Paddi Chat、Paddi Account 与楚河棋局。服务器 API、失效地址和不属于个人介绍范围的业务站未收录到新版个人介绍页。
+
 ## 本地预览
 
 在当前目录运行 python -m http.server 9091，然后打开 http://127.0.0.1:9091/。

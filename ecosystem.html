@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN" data-theme="light" data-page="ecosystem">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,47 +7,95 @@
   <title>Paddi Ecosystem · 万建伟 JewwyWan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/reset.css?v=20260712e">
   <link rel="stylesheet" href="./css/variables.css?v=20260712e">
-  <link rel="stylesheet" href="./css/sites.css?v=20261010-sites">
+  <link rel="stylesheet" href="./css/sites.css?v=20261011-ecosystem">
 </head>
-<body class="sites-body">
+<body class="ecosystem-body">
+  <video class="eco-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="./assets/paddi-brand-memory-animation.mp4" type="video/mp4">
+  </video>
+  <div class="eco-video-shade" aria-hidden="true"></div>
   <div class="sites-glow" aria-hidden="true"></div>
-  <header class="sites-header">
+
+  <header class="sites-header eco-header">
     <a class="sites-brand" href="./home.html" aria-label="返回 Paddi Studio 首页"><span class="sites-brand-dot" aria-hidden="true"></span><span>Paddi Studio</span></a>
-    <a class="back-link" href="./home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>返回首页</a>
+    <div class="eco-header-actions">
+      <span class="eco-live"><i></i> ECOSYSTEM / LIVE MAP</span>
+      <a class="back-link" href="./home.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>返回首页</a>
+    </div>
   </header>
-  <main class="sites-main">
-    <section class="sites-hero" aria-labelledby="page-title">
-      <p class="sites-kicker">Paddi / Ecosystem</p>
-      <h1 id="page-title">Paddi Ecosystem</h1>
-      <p class="sites-intro">这是我的长期工程工作台：把移动产品、网站、后端服务、实验项目和一套可复用的产品方法连接起来。</p>
-      <p class="sites-count"><span>04</span> 个产品方向</p>
+
+  <main class="eco-main">
+    <section class="eco-hero" aria-labelledby="eco-title">
+      <div class="eco-hero-copy">
+        <p class="sites-kicker">Paddi / Ecosystem</p>
+        <h1 id="eco-title">Paddi <span>Ecosystem</span></h1>
+        <p class="eco-intro">把移动产品、网站、服务端和公开交付入口放在同一张地图上。每条产品线都从真实需求出发，经过架构、开发、部署和持续迭代。</p>
+        <div class="eco-actions">
+          <a class="eco-button primary" href="https://paddi-chat.8-210-143-238.sslip.io/downloads/paddi/" target="_blank" rel="noopener">进入 Paddi 生态官网 <span>↗</span></a>
+          <a class="eco-button secondary" href="./portfolio.html">查看作品集 <span>→</span></a>
+        </div>
+      </div>
+      <div class="eco-hero-art" aria-label="Paddi 产品生态标志">
+        <div class="eco-ring ring-a"></div><div class="eco-ring ring-b"></div>
+        <div class="eco-core"><img src="./assets/ecosystem-paddi-mark.png" alt="Paddi 标志"></div>
+        <span class="eco-orbit-label label-top">WEB / APP</span>
+        <span class="eco-orbit-label label-right">API</span>
+        <span class="eco-orbit-label label-bottom">PRODUCT</span>
+      </div>
     </section>
-    <section class="site-grid" aria-label="Paddi Ecosystem 产品">
-      <a class="site-card" href="https://jewwywan.github.io/Paddi-Products/" target="_blank" rel="noopener">
-        <div class="site-card-top"><span class="site-index">01</span><svg class="site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
-        <h2>Paddle</h2><p>本地优先的 Android 错题整理应用：拍照收集、扫描处理、题目预览与导出。</p><span class="site-domain">公开产品页 / Paddle</span>
-      </a>
-      <a class="site-card" href="https://paddi-chat.8-210-143-238.sslip.io/" target="_blank" rel="noopener">
-        <div class="site-card-top"><span class="site-index">02</span><svg class="site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
-        <h2>Paddcht</h2><p>联系好友、分享媒体并进行实时互动的 Android 产品与服务端。</p><span class="site-domain">官网 / Paddi Chat</span>
-      </a>
-      <a class="site-card" href="https://account.8-210-143-238.sslip.io/" target="_blank" rel="noopener">
-        <div class="site-card-top"><span class="site-index">03</span><svg class="site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
-        <h2>Paddi Account</h2><p>独立账号与授权产品，为生态应用提供统一的身份与授权入口。</p><span class="site-domain">公网产品页 / Account</span>
-      </a>
-      <a class="site-card" href="https://paddi-chat.8-210-143-238.sslip.io/downloads/paddi/" target="_blank" rel="noopener">
-        <div class="site-card-top"><span class="site-index">04</span><svg class="site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
-        <h2>PaddLem</h2><p>面向 AI 对话、联网资料查找与小窗交互的产品方向，当前通过生态产品页提供测试版入口。</p><span class="site-domain">公开产品页 / PaddLem</span>
-      </a>
+
+    <section class="eco-products" aria-labelledby="products-title">
+      <div class="eco-section-head"><div><p class="eco-index">01 / PRODUCT LINES</p><h2 id="products-title">正在构建的产品线</h2></div><p class="eco-section-note">4 个方向 · 同一套设计与交付语言</p></div>
+      <div class="eco-product-grid">
+        <a class="eco-product-card featured" href="https://jewwywan.github.io/Paddi-Products/" target="_blank" rel="noopener">
+          <div class="eco-card-top"><span class="eco-status"><i></i> PUBLIC PRODUCT</span><span class="eco-card-num">01</span></div>
+          <img src="./assets/ecosystem-paddle.png" alt="Paddle 图标" class="eco-product-icon">
+          <h3>Paddle</h3><p>面向学习场景的 Android 错题整理应用，覆盖拍照收集、扫描处理、预览与导出。</p>
+          <span class="eco-card-link">打开公开产品页 <b>↗</b></span>
+        </a>
+        <a class="eco-product-card" href="https://paddi-chat.8-210-143-238.sslip.io/" target="_blank" rel="noopener">
+          <div class="eco-card-top"><span class="eco-status"><i></i> PUBLIC SERVICE</span><span class="eco-card-num">02</span></div>
+          <img src="./assets/ecosystem-paddcht.png" alt="Paddcht 图标" class="eco-product-icon">
+          <h3>Paddcht / Paddi Chat</h3><p>好友、媒体和实时互动的 Android 产品与服务端，强调关系与隐私边界。</p>
+          <span class="eco-card-link">打开产品官网 <b>↗</b></span>
+        </a>
+        <a class="eco-product-card" href="https://account.8-210-143-238.sslip.io/" target="_blank" rel="noopener">
+          <div class="eco-card-top"><span class="eco-status"><i></i> PUBLIC SERVICE</span><span class="eco-card-num">03</span></div>
+          <img src="./assets/ecosystem-paddi-mark.png" alt="Paddi Account 图标" class="eco-product-icon">
+          <h3>Paddi Account</h3><p>独立账号与授权入口，为生态产品提供统一的身份与访问边界。</p>
+          <span class="eco-card-link">打开账号入口 <b>↗</b></span>
+        </a>
+        <a class="eco-product-card" href="https://paddi-chat.8-210-143-238.sslip.io/downloads/paddi/" target="_blank" rel="noopener">
+          <div class="eco-card-top"><span class="eco-status"><i></i> TESTING</span><span class="eco-card-num">04</span></div>
+          <img src="./assets/ecosystem-paddlem.png" alt="PaddLem 图标" class="eco-product-icon eco-product-icon-alt">
+          <h3>PaddLem</h3><p>面向 AI 对话、资料查找和小窗交互的产品方向，通过生态官网提供测试入口。</p>
+          <span class="eco-card-link">查看测试入口 <b>↗</b></span>
+        </a>
+      </div>
     </section>
-    <section class="site-grid" aria-label="生态构建方式" style="margin-top:24px">
-      <a class="site-card" href="./about.html"><div class="site-card-top"><span class="site-index">A</span><svg class="site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div><h2>产品架构</h2><p>从目标、用户流程、数据与接口边界，到发布、验收和持续维护。</p><span class="site-domain">Paddi Studio / About</span></a>
-      <a class="site-card" href="./portfolio.html"><div class="site-card-top"><span class="site-index">B</span><svg class="site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div><h2>公开源码</h2><p>棋类、Android 游戏、AI 平台和机器学习实验以公开仓库持续迭代。</p><span class="site-domain">Paddi Studio / Portfolio</span></a>
+
+    <section class="eco-architecture" aria-labelledby="architecture-title">
+      <div class="eco-section-head"><div><p class="eco-index">02 / SYSTEM MAP</p><h2 id="architecture-title">从想法到可用产品</h2></div><p class="eco-section-note">产品经理视角的顶层架构</p></div>
+      <div class="eco-flow">
+        <article><span>01</span><strong>体验层</strong><p>网站、Android 客户端和清晰的用户流程，让产品能被理解和使用。</p></article>
+        <div class="eco-flow-line" aria-hidden="true">→</div>
+        <article><span>02</span><strong>服务层</strong><p>账号、API、数据与权限边界，把多个产品连接成可维护的系统。</p></article>
+        <div class="eco-flow-line" aria-hidden="true">→</div>
+        <article><span>03</span><strong>交付层</strong><p>部署、域名、版本、验收和回滚，让每次发布都能被验证。</p></article>
+      </div>
+    </section>
+
+    <section class="eco-bottom-grid" aria-label="生态入口">
+      <a href="./sites.html" class="eco-bottom-card"><span class="eco-index">03 / PUBLIC SITES</span><h3>公开站点清单</h3><p>查看当前能打开的个人主页、产品页和服务入口。</p><b>浏览站点 →</b></a>
+      <a href="./portfolio.html" class="eco-bottom-card"><span class="eco-index">04 / OPEN SOURCE</span><h3>公开源码与实验</h3><p>棋类项目、Android 应用、AI 平台和机器学习实验。</p><b>查看作品集 →</b></a>
     </section>
   </main>
-  <footer class="sites-footer"><span>Paddi Studio · 万建伟 JewwyWan · Copyright</span><a href="https://paddi-chat.8-210-143-238.sslip.io/downloads/paddi/" target="_blank" rel="noopener">进入 paddi生态官网</a></footer>
+
+  <footer class="sites-footer eco-footer"><span>Paddi Studio · 万建伟 JewwyWan · Copyright</span><a href="https://paddi-chat.8-210-143-238.sslip.io/downloads/paddi/" target="_blank" rel="noopener">进入 paddi生态官网</a></footer>
+  <script src="./JS/i18n.js?v=20261011-global"></script>
 </body>
 </html>
+

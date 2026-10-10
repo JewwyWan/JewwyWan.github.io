@@ -23,6 +23,13 @@
   position: relative;
   z-index: 1;
 }
+.page-lang { position: relative; z-index: 20; }
+.page-lang-btn { min-height: 32px; padding: 6px 10px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line2); border-radius: var(--r-pill); background: transparent; color: var(--sub); font: 500 .74rem var(--sans); cursor: pointer; }
+.page-lang-btn:hover, .page-lang-btn:focus-visible { border-color: var(--accent); color: var(--accent); }
+.page-lang-dropdown { position: absolute; top: calc(100% + 8px); right: 0; min-width: 108px; padding: 5px; display: none; border: 1px solid var(--line2); border-radius: 10px; background: var(--surface); box-shadow: 0 14px 34px rgba(20, 40, 70, .16); }
+.page-lang-dropdown.open { display: grid; }
+.page-lang-dropdown button { border: 0; border-radius: 7px; padding: 8px 9px; background: transparent; color: var(--sub); text-align: left; font: .75rem var(--sans); cursor: pointer; }
+.page-lang-dropdown button:hover, .page-lang-dropdown button.active { background: var(--accent-soft); color: var(--accent); }
 
 .sites-header {
   width: min(1180px, calc(100% - 48px));
@@ -73,6 +80,9 @@
   width: 17px;
   height: 17px;
 }
+.sites-header .page-lang { margin-left: auto; }
+.sites-header .page-lang-btn { color: var(--sub); border-color: var(--line2); }
+.sites-header .page-lang-dropdown { z-index: 5; }
 
 .back-link:hover,
 .back-link:focus-visible {
@@ -332,3 +342,121 @@
     transform: none;
   }
 }
+
+/* ============================================================
+   Paddi Ecosystem 展示页
+   ============================================================ */
+.ecosystem-body {
+  position: relative;
+  min-height: 100vh;
+  color: #edf3f4;
+  background: #081512;
+  overflow-x: hidden;
+}
+.eco-video,
+.eco-video-shade {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.eco-video {
+  z-index: 0;
+  object-fit: cover;
+  opacity: .27;
+  filter: saturate(.75) contrast(1.12);
+}
+.eco-video-shade {
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(5, 15, 14, .92) 0%, rgba(8, 22, 19, .82) 36%, rgba(7, 16, 15, .97) 100%);
+}
+.ecosystem-body .sites-glow {
+  z-index: 0;
+  opacity: .34;
+  background:
+    radial-gradient(ellipse 680px 560px at 12% 11%, rgba(65, 196, 166, .22), transparent 70%),
+    radial-gradient(ellipse 640px 520px at 92% 62%, rgba(92, 140, 255, .16), transparent 74%);
+}
+.ecosystem-body .sites-header,
+.ecosystem-body .sites-main,
+.ecosystem-body .sites-footer { z-index: 1; }
+.ecosystem-body .eco-main { position: relative; z-index: 1; }
+.eco-header { padding-top: 28px; }
+.ecosystem-body .sites-brand { color: #f1f7f5; }
+.ecosystem-body .sites-brand-dot { background: #65d8b5; box-shadow: 0 0 18px rgba(101, 216, 181, .68); }
+.eco-header-actions { display: flex; align-items: center; gap: 18px; }
+.eco-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(211, 239, 232, .67);
+  font: 500 .68rem/1 var(--mono);
+  letter-spacing: .13em;
+}
+.eco-live i,
+.eco-status i { width: 7px; height: 7px; border-radius: 50%; background: #67d8b8; box-shadow: 0 0 12px rgba(103, 216, 184, .8); }
+.ecosystem-body .back-link { color: rgba(234, 247, 243, .8); border-color: rgba(187, 229, 217, .25); }
+.ecosystem-body .back-link:hover,
+.ecosystem-body .back-link:focus-visible { border-color: #6ddabd; background: rgba(101, 216, 181, .12); color: #a9f0dc; }
+.ecosystem-body .page-lang-btn { color: rgba(234, 247, 243, .8); border-color: rgba(187, 229, 217, .25); }
+.ecosystem-body .page-lang-btn:hover, .ecosystem-body .page-lang-btn:focus-visible { border-color: #6ddabd; color: #a9f0dc; }
+.ecosystem-body .page-lang-dropdown { background: rgba(13, 34, 29, .96); border-color: rgba(187, 229, 217, .25); }
+.ecosystem-body .page-lang-dropdown button { color: rgba(225, 244, 237, .75); }
+.ecosystem-body .page-lang-dropdown button:hover, .ecosystem-body .page-lang-dropdown button.active { color: #9cebd3; background: rgba(101, 216, 181, .12); }
+.eco-main { width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 72px 0 76px; }
+.eco-hero { min-height: 530px; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(300px, .92fr); align-items: center; gap: 52px; }
+.ecosystem-body .sites-kicker { color: #7ee6c5; }
+.eco-hero h1 { margin: 0 0 20px; color: #f1fbf8; -webkit-text-fill-color: #f1fbf8; background: none; font: 700 clamp(3.3rem, 8vw, 7.2rem)/.88 var(--serif); letter-spacing: -.055em; }
+.eco-hero h1 span { color: #7edfc0; }
+.eco-intro { max-width: 650px; margin: 0; color: rgba(226, 241, 238, .78); font-size: clamp(1rem, 2vw, 1.14rem); line-height: 1.9; }
+.eco-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.eco-button { display: inline-flex; align-items: center; gap: 14px; min-height: 48px; padding: 0 19px; border-radius: 999px; text-decoration: none; font-size: .9rem; font-weight: 700; transition: transform .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease); }
+.eco-button span { font-size: 1.1rem; }
+.eco-button.primary { color: #082019; background: #85e4c8; box-shadow: 0 12px 34px rgba(80, 224, 178, .18); }
+.eco-button.secondary { color: #dff4ee; border: 1px solid rgba(198, 238, 228, .3); background: rgba(255, 255, 255, .06); }
+.eco-button:hover, .eco-button:focus-visible { transform: translateY(-3px); }
+.eco-button.primary:hover, .eco-button.primary:focus-visible { background: #a5f1db; }
+.eco-button.secondary:hover, .eco-button.secondary:focus-visible { border-color: #78dfc0; background: rgba(112, 220, 187, .13); }
+.eco-hero-art { position: relative; min-height: 430px; display: grid; place-items: center; }
+.eco-ring { position: absolute; border: 1px solid rgba(128, 228, 200, .28); border-radius: 50%; transform: rotate(-19deg); }
+.ring-a { width: min(430px, 90%); aspect-ratio: 1; box-shadow: 0 0 80px rgba(78, 219, 173, .12); }
+.ring-b { width: min(310px, 65%); aspect-ratio: 1; border-color: rgba(121, 169, 255, .32); transform: rotate(42deg); }
+.eco-core { position: relative; z-index: 1; width: min(235px, 55%); aspect-ratio: 1; display: grid; place-items: center; border: 1px solid rgba(218, 253, 245, .55); border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(147, 236, 208, .88), rgba(39, 96, 80, .85) 53%, rgba(7, 22, 18, .95) 100%); box-shadow: 0 22px 80px rgba(71, 221, 176, .22), inset 0 0 40px rgba(255, 255, 255, .12); }
+.eco-core img { width: 55%; height: 55%; object-fit: contain; filter: brightness(0) invert(1); opacity: .9; }
+.eco-orbit-label { position: absolute; z-index: 2; color: rgba(211, 239, 232, .8); font: 500 .67rem var(--mono); letter-spacing: .16em; }
+.label-top { top: 16%; left: 18%; }.label-right { right: 7%; top: 48%; }.label-bottom { bottom: 15%; left: 24%; }
+.eco-products, .eco-architecture, .eco-bottom-grid { margin-top: 52px; }
+.eco-section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
+.eco-index { margin: 0 0 9px; color: #75dfbd; font: 500 .7rem var(--mono); letter-spacing: .15em; }
+.eco-section-head h2 { margin: 0; color: #f0faf7; font-size: clamp(1.6rem, 3vw, 2.3rem); letter-spacing: -.035em; }
+.eco-section-note { margin: 0; color: rgba(213, 236, 230, .55); font: .75rem var(--mono); }
+.eco-product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.eco-product-card { position: relative; min-height: 355px; padding: 20px; display: flex; flex-direction: column; color: #eaf7f3; border: 1px solid rgba(194, 231, 220, .16); border-radius: 18px; background: linear-gradient(150deg, rgba(26, 57, 48, .72), rgba(8, 26, 23, .87)); box-shadow: 0 18px 60px rgba(0, 0, 0, .14); text-decoration: none; overflow: hidden; transition: transform .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease); }
+.eco-product-card::after { content: ""; position: absolute; inset: auto -25% -42% 28%; height: 190px; border-radius: 50%; background: rgba(101, 222, 185, .11); filter: blur(32px); pointer-events: none; }
+.eco-product-card:hover, .eco-product-card:focus-visible { transform: translateY(-7px); border-color: rgba(117, 225, 193, .62); background: linear-gradient(150deg, rgba(33, 79, 65, .84), rgba(9, 32, 27, .92)); outline: 3px solid rgba(102, 222, 186, .12); outline-offset: 3px; }
+.eco-product-card.featured { border-color: rgba(122, 230, 198, .42); background: linear-gradient(150deg, rgba(40, 91, 73, .8), rgba(8, 28, 24, .9)); }
+.eco-card-top { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; }
+.eco-status { display: inline-flex; align-items: center; gap: 7px; color: rgba(216, 242, 234, .72); font: 500 .59rem var(--mono); letter-spacing: .08em; }
+.eco-card-num { color: rgba(206, 239, 229, .45); font: .7rem var(--mono); }
+.eco-product-icon { position: relative; z-index: 1; width: 72px; height: 72px; margin: 29px 0 21px; object-fit: contain; border-radius: 18px; box-shadow: 0 12px 30px rgba(0, 0, 0, .2); }
+.eco-product-icon-alt { filter: saturate(.8) brightness(1.07); }
+.eco-product-card h3 { position: relative; z-index: 1; margin: 0 0 11px; color: #f0fbf7; font-size: 1.13rem; line-height: 1.25; }
+.eco-product-card p { position: relative; z-index: 1; margin: 0; color: rgba(213, 237, 229, .69); font-size: .84rem; line-height: 1.72; }
+.eco-card-link { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 20px; color: #84e5c6; font: .72rem var(--mono); }
+.eco-card-link b { font-size: 1.05rem; font-weight: 400; }
+.eco-architecture { padding: 31px 30px 34px; border: 1px solid rgba(194, 231, 220, .14); border-radius: 20px; background: linear-gradient(120deg, rgba(20, 46, 39, .79), rgba(12, 25, 30, .7)), url('../assets/ecosystem-abstract.png') center 38% / cover; }
+.eco-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 14px; }
+.eco-flow article { min-height: 157px; padding: 20px; border-radius: 13px; background: rgba(255, 255, 255, .055); border: 1px solid rgba(205, 239, 229, .12); }
+.eco-flow article > span { display: block; margin-bottom: 25px; color: #77dfbe; font: .68rem var(--mono); letter-spacing: .1em; }
+.eco-flow strong { display: block; margin-bottom: 9px; color: #f0faf7; font-size: 1.05rem; }
+.eco-flow p { margin: 0; color: rgba(212, 235, 228, .65); font-size: .82rem; line-height: 1.65; }
+.eco-flow-line { display: grid; place-items: center; color: rgba(123, 226, 193, .6); font-size: 1.5rem; }
+.eco-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.eco-bottom-card { min-height: 175px; padding: 24px; color: #edf8f4; border: 1px solid rgba(194, 231, 220, .14); border-radius: 18px; background: rgba(17, 40, 35, .66); text-decoration: none; transition: transform .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease); }
+.eco-bottom-card:hover, .eco-bottom-card:focus-visible { transform: translateY(-4px); border-color: rgba(121, 228, 195, .5); background: rgba(27, 67, 54, .74); }
+.eco-bottom-card h3 { margin: 26px 0 8px; font-size: 1.2rem; }.eco-bottom-card p { margin: 0; color: rgba(211, 235, 227, .67); font-size: .86rem; }.eco-bottom-card b { display: block; margin-top: 19px; color: #80e0c1; font: .75rem var(--mono); }
+.ecosystem-body .sites-footer { color: rgba(207, 234, 226, .5); border-color: rgba(194, 231, 220, .15); }.ecosystem-body .sites-footer a { color: rgba(207, 234, 226, .62); }
+@media (max-width: 980px) { .eco-hero { grid-template-columns: 1fr .75fr; gap: 22px; }.eco-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }.eco-hero-art { min-height: 350px; } }
+@media (max-width: 700px) { .eco-header-actions { gap: 9px; }.eco-live { display: none; }.eco-main { width: min(100% - 32px, 1180px); padding-top: 38px; }.eco-hero { display: block; min-height: 0; }.eco-hero-art { min-height: 310px; margin-top: 18px; }.eco-hero h1 { font-size: clamp(3.1rem, 17vw, 5rem); }.eco-section-head { display: block; }.eco-section-note { margin-top: 12px; }.eco-flow { display: block; }.eco-flow-line { height: 36px; transform: rotate(90deg); }.eco-bottom-grid { grid-template-columns: 1fr; }.eco-architecture { padding: 23px 17px 25px; } }
+@media (max-width: 520px) { .eco-product-grid { grid-template-columns: 1fr; }.eco-product-card { min-height: 310px; }.eco-button { width: 100%; justify-content: space-between; }.eco-footer { flex-direction: column; gap: 10px; } }

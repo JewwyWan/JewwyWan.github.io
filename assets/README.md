@@ -8,7 +8,8 @@
 |--------|------|----------|
 | `qr-wechat-work.png` | 企业微信二维码 | 300×300 px |
 | `qr-wechat.png` | 微信二维码 | 300×300 px |
-| `qr-whatsapp.jpg` | WhatsApp 联系二维码 | 原图 |
+| `qr-whatsapp.jpg` | WhatsApp 联系二维码原图 | 913×1130 px |
+| `qr-whatsapp-square.jpg` | 联系页展示用二维码裁切图 | 429×429 px |
 
 ## 图片要求：
 
@@ -23,7 +24,8 @@
 assets/
 ├── qr-wechat-work.png    ← 企业微信
 ├── qr-wechat.png          ← 微信
-└── qr-whatsapp.jpg        ← WhatsApp
+├── qr-whatsapp.jpg        ← WhatsApp 原图
+└── qr-whatsapp-square.jpg ← 联系页只显示二维码的裁切图
 ```
 
 ## 悬浮效果：

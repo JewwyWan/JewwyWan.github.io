@@ -69,11 +69,27 @@
       option.classList.toggle('active', active);
       option.setAttribute('aria-checked', String(active));
     });
+    document.querySelectorAll('[data-lang-current]').forEach((current) => { current.textContent = LANG_LABELS[currentLang]; });
+    document.querySelectorAll('[data-lang-option]').forEach((option) => {
+      const active = option.dataset.langOption === currentLang;
+      option.classList.toggle('active', active);
+      option.setAttribute('aria-checked', String(active));
+    });
     localStorage.setItem(STORAGE_KEY, currentLang);
     window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang: currentLang } }));
   }
   window.I18N = { applyLang, getLang, SUPPORTED, LANG_LABELS, DICT: I18N };
+  function installPageLanguageControl() {
+    if (document.getElementById('langToggle')) return;
+    const host = document.querySelector('.titlebar-right') || document.querySelector('.eco-header-actions') || document.querySelector('.sites-header');
+    if (!host) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'page-lang';
+    wrap.innerHTML = '<button class="page-lang-btn" id="langToggle" type="button" aria-label="切换语言" aria-haspopup="menu" aria-expanded="false"><span aria-hidden="true">◎</span><span data-lang-current>中文</span><span aria-hidden="true">⌄</span></button><div class="page-lang-dropdown" id="langDropdown" role="menu" aria-label="语言选项"><button type="button" data-lang-option="zh" role="menuitemradio" aria-checked="false">中文</button><button type="button" data-lang-option="en" role="menuitemradio" aria-checked="false">English</button><button type="button" data-lang-option="ja" role="menuitemradio" aria-checked="false">日本語</button><button type="button" data-lang-option="ko" role="menuitemradio" aria-checked="false">한국어</button></div>';
+    host.appendChild(wrap);
+  }
   function init() {
+    installPageLanguageControl();
     const toggle = document.getElementById('langToggle');
     const dropdown = document.getElementById('langDropdown');
     const setOpen = (open) => {
@@ -86,8 +102,8 @@
       document.addEventListener('click', (event) => { if (!dropdown.contains(event.target) && !toggle.contains(event.target)) setOpen(false); });
       document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setOpen(false); });
     }
-    document.querySelectorAll('.lang-option').forEach((option) => {
-      option.addEventListener('click', () => { applyLang(option.dataset.lang); setOpen(false); });
+    document.querySelectorAll('.lang-option, [data-lang-option]').forEach((option) => {
+      option.addEventListener('click', () => { applyLang(option.dataset.lang || option.dataset.langOption); setOpen(false); });
     });
     applyLang(getLang());
   }
