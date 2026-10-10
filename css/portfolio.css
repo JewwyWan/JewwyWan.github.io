@@ -27,6 +27,10 @@
 .portfolio-list .proj .proj-detail p:last-child {
   margin-bottom: 0;
 }
+.portfolio-list .proj .proj-foot {
+  flex-wrap: wrap;
+  gap: 12px;
+}
 .portfolio-list .proj .proj-detail b {
   color: var(--ink);
   font-weight: 600;
