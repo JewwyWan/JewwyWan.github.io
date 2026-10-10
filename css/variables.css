@@ -1,0 +1,108 @@
+/* ============================================================
+   设计变量 — Paddi Studio 个人站视觉基础
+   配色：带色温近黑 + 6级明度阶梯 + 单一柔和蓝强调
+   ============================================================ */
+
+:root {
+  /* ---------- 背景明度阶梯（深→浅，模拟编辑器分层）---------- */
+  --bg: #08080a;          /* 主背景，近黑带一丝蓝灰 */
+  --editor: #0b0b10;      /* 编辑器底 */
+  --editor2: #0e0e14;     /* 编辑器次底 */
+  --panel: #0c0c11;       /* 侧栏底 */
+  --chrome: #0f0f16;      /* 顶栏/控件底 */
+  --surface: #101015;     /* 卡片面 */
+  --surface2: #17171d;    /* 悬浮面/强调卡 */
+
+  /* ---------- 文字层阶 ---------- */
+  --ink: #ededee;         /* 主文字（非纯白）*/
+  --sub: #9a9aa1;         /* 次级文字 */
+  --sub2: #8a8a93;        /* 更次 */
+  --faint: #7c7d8c;       /* 最弱 */
+
+  /* ---------- 强调色（电光青蓝→紫 渐变）---------- */
+  --accent: #5c8cff;      /* 主强调，柔和钴蓝 */
+  --accent-2: #7c4dff;    /* 渐变终点紫 */
+  --accent-soft: rgba(92, 140, 255, .12);  /* 12% 透明底色块 */
+  --accent-glow: rgba(92, 140, 255, .17);  /* 光晕用 */
+
+  /* ---------- 终端语法高亮色板（Tokyo Night 风）---------- */
+  --t-k: #c3a6ff;  /* 关键字 紫 */
+  --t-f: #82aaff;  /* 函数 蓝 */
+  --t-s: #a4d78b;  /* 字符串 绿 */
+  --t-n: #ff9e64;  /* 数字 橙 */
+  --t-t: #5bd6c4;  /* 类型 青 */
+  --t-c: #7c86b0;  /* 注释 灰 */
+  --t-b: #519aba;  /* Markdown/标记 蓝 */
+
+  /* ---------- 分隔线 ---------- */
+  --line: rgba(255, 255, 255, .08);   /* 极淡白线 */
+  --line2: rgba(255, 255, 255, .15);  /* 稍强 */
+
+  /* ---------- 系统色 ---------- */
+  --red: #ff5f57;
+  --yellow: #febc2e;
+  --green: #28c840;
+
+  /* ---------- 字体系统 ---------- */
+  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue",
+          "Inter", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --serif: "Cormorant Garamond", "Noto Serif SC", Georgia, serif;
+
+  /* ---------- 圆角 ---------- */
+  --r: 14px;       /* 卡片/容器 */
+  --r-sm: 8px;     /* 小控件 */
+  --r-xs: 5px;     /* 标签 */
+  --r-pill: 980px; /* 胶囊/按钮全圆 */
+
+  /* ---------- 间距 ---------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+
+  /* ---------- IDE chrome 尺寸 ---------- */
+  --h-title: 44px;   /* titlebar 高 */
+  --h-tabs: 42px;    /* tabstrip 高 */
+  --h-status: 30px;  /* statusbar 高 */
+  --w-rail: 230px;   /* 左侧文件树宽 */
+
+  /* ---------- 内容宽度 ---------- */
+  --maxw: 1080px;    /* 内容最大宽 */
+  --wide: 1220px;    /* 宽版 */
+
+  /* ---------- 动效 ---------- */
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --ease-2: cubic-bezier(.22, 1, .36, 1);
+  --t: .22s;
+  --t-hover: .3s;
+  --t-reveal: .8s;
+}
+
+/* ---------- 浅色模式（通过 [data-theme="light"] 切换）---------- */
+[data-theme="light"] {
+  --bg: #eef3f8;
+  --editor: #ffffff;
+  --editor2: #f7f9fc;
+  --panel: #ffffff;
+  --chrome: #e8edf3;
+  --surface: #ffffff;
+  --surface2: #f0f4f8;
+
+  --ink: #2a3540;
+  --sub: #5a6878;
+  --sub2: #7080a0;
+  --faint: #9098a8;
+
+  --accent: #3d6dd8;
+  --accent-2: #6c3dd8;
+  --accent-soft: rgba(61, 109, 216, .08);
+  --accent-glow: rgba(61, 109, 216, .12);
+
+  --line: rgba(60, 90, 140, .1);
+  --line2: rgba(60, 90, 140, .18);
+}

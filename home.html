@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paddi Studio · 万建伟 JewwyWan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/reset.css?v=20260712e">
+  <link rel="stylesheet" href="./css/variables.css?v=20260712e">
+  <link rel="stylesheet" href="./css/landing.css?v=20261010-personal">
+  <link rel="stylesheet" href="./css/cursor-ripple.css?v=20260721b">
+</head>
+<body class="landing-body">
+
+  <!-- 背景涟漪 canvas（鼠标移动跟随荡开，pointer-events:none 不挡按钮）-->
+  <canvas id="ripple-canvas"></canvas>
+
+  <!-- 动态粒子背景 -->
+  <canvas id="bg-particles"></canvas>
+  <div class="landing-glow"></div>
+
+  <!-- 背景音乐 -->
+  <audio id="bgm-audio" preload="auto" loop>
+    <source src="./assets/bgm-feng.wav" type="audio/wav">
+  </audio>
+
+  <!-- ===== 顶部导航栏（展开→收缩）===== -->
+    <nav class="floating-nav" id="floatingNav" aria-label="主导航">
+    <a href="#screen-1" class="fn-brand" id="fnBrand">
+      <span class="fn-brand-dot"></span>
+      <span>Paddi</span>
+    </a>
+    <div class="fn-items" id="fnItems">
+      <button class="fn-music" id="musicToggle" type="button" title="播放音乐" aria-label="播放音乐">
+        <svg class="music-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <span class="music-label">音乐</span>
+      </button>
+      <button class="fn-theme" id="fnThemeBtn" type="button" title="切换主题" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+      <div class="fn-divider"></div>
+      <a href="./about.html" class="fn-item fn-link" data-i18n="nav.about">关于我</a>
+      <a href="./contact.html" class="fn-item fn-link" data-i18n="nav.contact">联系我</a>
+      <a href="./portfolio.html" class="fn-item fn-link" data-i18n="nav.portfolio">作品集</a>
+      <a href="./sites.html" class="fn-item fn-link" data-i18n="nav.sites">开发站点</a>
+      <div class="fn-divider"></div>
+      <div class="fn-lang">
+        <button class="fn-lang-btn" id="langToggle" type="button" aria-label="切换语言" aria-haspopup="menu" aria-expanded="false" aria-controls="langDropdown">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <span id="langCurrent">中文</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown" role="menu" aria-label="语言选项">
+          <button class="lang-option" type="button" data-lang="zh" role="menuitemradio" aria-checked="false"><span class="lang-flag">🇨🇳</span>中文</button>
+          <button class="lang-option" type="button" data-lang="en" role="menuitemradio" aria-checked="false"><span class="lang-flag">🇬🇧</span>English</button>
+          <button class="lang-option" type="button" data-lang="ja" role="menuitemradio" aria-checked="false"><span class="lang-flag">🇯🇵</span>日本語</button>
+          <button class="lang-option" type="button" data-lang="ko" role="menuitemradio" aria-checked="false"><span class="lang-flag">🇰🇷</span>한국어</button>
+        </div>
+      </div>
+      <a href="./ecosystem.html" class="fn-item fn-cta" data-i18n="nav.ecosystem">Paddi Ecosystem</a>
+      <button class="fn-mobile-toggle" id="fnMobileToggle" type="button" aria-label="菜单" aria-controls="fnItems" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="landing-wrap">
+
+    <!-- ===== 第一屏：Hero 问候 ===== -->
+    <section class="landing-screen-1" id="screen-1">
+      <!-- 生活照 -->
+      <img src="./assets/portrait.jpg?v=20260731b" alt="像素风拼豆挂件" class="landing-portrait">
+
+      <div class="landing-eyebrow" data-i18n="hero.eyebrow">个人工作室 · 独立开发</div>
+      <h1 class="landing-title">Paddi<span class="grad"> Studio</span></h1>
+      <div class="landing-subtitle" data-i18n="hero.subtitle">网站与移动端开发者 · 产品架构师</div>
+      <p class="landing-greeting">
+        <span data-i18n="hero.greetingBefore">Hi，I'm </span><b>Paddi-万建伟</b><span data-i18n="hero.greetingAfter">，网站与移动端开发者，产品架构师</span>
+      </p>
+      <p class="landing-tagline" data-i18n="hero.tagline">专注网站、移动端 App 的前后端开发，以及产品经理视角的顶层架构设计。</p>
+
+      <!-- 下滑指示器 -->
+      <a href="#screen-2" class="scroll-indicator">
+        <span class="scroll-indicator-text" data-i18n="hero.scroll">向下探索</span>
+        <svg class="scroll-indicator-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
+    </section>
+
+    <!-- ===== 第二屏：站点导航 ===== -->
+    <section class="landing-screen-2" id="screen-2">
+      <h2 class="landing-screen-2-title">
+        <span data-i18n="screen2.title">探索</span> <span class="grad">Paddi Studio</span>
+      </h2>
+      <p class="landing-screen-2-sub" data-i18n="screen2.sub">选择一个入口，了解我的作品与正在构建的生态</p>
+
+            <nav class="landing-nav" aria-label="Paddi Studio 页面入口">
+        <a href="./about.html" class="landing-card">
+          <div class="lc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 21v-1a6 6 0 0112 0v1"/></svg></div>
+          <div class="lc-label" data-i18n="card.about.label">关于我</div><div class="lc-desc" data-i18n="card.about.desc">ABOUT</div>
+          <svg class="lc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+        <a href="./contact.html" class="landing-card">
+          <div class="lc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div>
+          <div class="lc-label" data-i18n="card.contact.label">联系我</div><div class="lc-desc" data-i18n="card.contact.desc">CONTACT</div>
+          <svg class="lc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+        <a href="./portfolio.html" class="landing-card">
+          <div class="lc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+          <div class="lc-label" data-i18n="card.portfolio.label">作品集</div><div class="lc-desc" data-i18n="card.portfolio.desc">PORTFOLIO</div>
+          <svg class="lc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+        <a href="./ecosystem.html" class="landing-card landing-card-highlight">
+          <div class="lc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M12 7.5v4M10.4 12.7l-3.1 2.8M13.6 12.7l3.1 2.8"/></svg></div>
+          <div class="lc-label" data-i18n="card.ecosystem.label">Paddi Ecosystem</div><div class="lc-desc" data-i18n="card.ecosystem.desc">ECOSYSTEM</div>
+          <svg class="lc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+        <a href="./sites.html" class="landing-card">
+          <div class="lc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.3 7.2l2.5 8M15.7 7.2l-2.5 8M8.5 6h7"/></svg></div>
+          <div class="lc-label" data-i18n="card.sites.label">开发站点</div><div class="lc-desc" data-i18n="card.sites.desc">SITE DIRECTORY</div>
+          <svg class="lc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+      </nav>
+    </section>
+
+    <!-- 底栏 -->
+        <footer class="landing-foot">
+      <span data-i18n="foot.copy">Paddi Studio · 万建伟 JewwyWan · Copyright</span>
+      <div class="lf-links">
+        <a href="https://github.com/JewwyWan" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:paddi520wan@gmail.com">Email</a>
+        <a href="https://paddi-chat.8-210-143-238.sslip.io/downloads/paddi/" target="_blank" rel="noopener" data-i18n="foot.ecosystem">paddi生态</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- JS -->
+  <script src="./JS/i18n.js?v=20261010-personal"></script>
+  <script src="./JS/music.js?v=20260712e"></script>
+  <script src="./JS/landing.js?v=20260721b"></script>
+  <script src="./JS/particles.js?v=20260721b"></script>
+  <script src="./JS/ripple.js?v=20260721b"></script>
+</body>
+</html>

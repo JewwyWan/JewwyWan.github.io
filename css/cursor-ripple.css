@@ -1,0 +1,65 @@
+/* ============================================================
+   cursor-ripple.css — 全站原生鼠标光标 + 背景涟漪 canvas
+   - 使用浏览器原生 default / pointer / text 光标
+   - 涟漪 canvas：固定定位、不挡交互、位于页面内容下方
+   ============================================================ */
+
+/* ---------- 原生鼠标光标 ---------- */
+body {
+  cursor: default;
+}
+
+/* 可点击元素使用系统手型 */
+a,
+button,
+[role="button"],
+input[type="checkbox"],
+input[type="radio"],
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+label[for],
+summary,
+.fn-brand,
+.fn-item,
+.fn-link,
+.fn-cta,
+.fn-music,
+.fn-theme,
+.fn-lang-btn,
+.lang-option,
+.fn-mobile-toggle,
+.landing-card,
+.scroll-indicator,
+.site-card {
+  cursor: pointer;
+}
+
+/* 文本输入类：保留系统 caret，避免光标变手型造成困惑 */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+textarea,
+[contenteditable="true"] {
+  cursor: text;
+}
+
+/* ---------- 背景涟漪 canvas ---------- */
+#ripple-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;               /* 位于装饰背景上方、所有页面内容下方 */
+  pointer-events: none;     /* 不挡按钮点击，鼠标事件由 document 监听 */
+}
+
+/* 减动效：关闭涟漪（ripple.js 也会检测，双保险）*/
+@media (prefers-reduced-motion: reduce) {
+  #ripple-canvas { display: none; }
+}

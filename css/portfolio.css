@@ -1,0 +1,46 @@
+/* ============================================================
+   portfolio.css — 作品集子页面专用样式
+   复用 components.css 的 .proj / .proj-head / .proj-stack 等
+   ============================================================ */
+
+/* 单列项目布局 */
+.portfolio-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+/* 项目卡更宽松的纵向间距 */
+.portfolio-list .proj {
+  padding: var(--sp-5) var(--sp-5) var(--sp-4);
+}
+
+/* 详细描述段落 */
+.portfolio-list .proj .proj-detail {
+  color: var(--sub);
+  line-height: 1.75;
+  font-size: .92rem;
+}
+.portfolio-list .proj .proj-detail p {
+  margin-bottom: var(--sp-2);
+}
+.portfolio-list .proj .proj-detail p:last-child {
+  margin-bottom: 0;
+}
+.portfolio-list .proj .proj-detail b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* 项目编号大字 */
+.portfolio-list .proj .proj-num {
+  font-size: 1.1rem;
+  opacity: .7;
+}
+
+/* 响应式 */
+@media (max-width: 860px) {
+  .portfolio-list .proj {
+    padding: var(--sp-4);
+  }
+}

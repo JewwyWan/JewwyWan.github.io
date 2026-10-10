@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="万建伟 JewwyWan 的个人介绍：网站与移动端开发、产品架构、学习经历、实习与专业能力。">
+  <title>关于万建伟 JewwyWan · Paddi Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/reset.css?v=20260712e">
+  <link rel="stylesheet" href="./css/variables.css?v=20260712e">
+  <link rel="stylesheet" href="./css/layout.css?v=20260721b">
+  <link rel="stylesheet" href="./css/components.css?v=20261010-profile">
+  <link rel="stylesheet" href="./css/animations.css?v=20260712e">
+  <link rel="stylesheet" href="./css/cursor-ripple.css?v=20260721b">
+</head>
+<body>
+  <canvas id="ripple-canvas"></canvas>
+  <audio id="bgm-audio" preload="auto" loop><source src="./assets/bgm-feng.wav" type="audio/wav"></audio>
+  <div class="progress" id="progress"></div>
+
+  <div class="titlebar">
+    <div class="titlebar-left">
+      <div class="traffic"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+      <span class="titlebar-path">Paddi · <b>关于我 / About</b></span>
+    </div>
+    <div class="titlebar-center">万建伟 · Website / App / Product</div>
+    <div class="titlebar-right">
+      <a href="./home.html" class="status-pill" style="text-decoration:none;color:inherit;"><span class="dot" style="background:var(--green)"></span>返回主页</a>
+      <button class="titlebar-music" id="musicToggle" title="播放音乐" aria-label="播放音乐">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span class="music-label">音乐</span>
+      </button>
+      <button class="theme-btn" id="themeBtn" title="切换主题" aria-label="切换主题"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button>
+    </div>
+  </div>
+
+  <div class="tabstrip">
+    <button class="tab" data-href="./home.html">← 返回主页</button>
+    <button class="tab active" data-target="about-hero">关于我</button>
+  </div>
+
+  <aside class="rail">
+    <div class="rail-header"><span>资源管理器</span><span>about</span></div>
+    <div class="tree">
+      <div class="tree-folder open" data-folder>
+        <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 1.5L7 5L3 8.5"/></svg>
+        <svg class="ic" viewBox="0 0 16 16" fill="currentColor"><path d="M1 3a1 1 0 011-1h4l2 2h6a1 1 0 011 1v8a1 1 0 01-1 1H2a1 1 0 01-1-1V3z"/></svg>
+        <span>about/</span>
+      </div>
+      <div class="tree-children">
+        <div class="tree-file active" data-scroll="about-hero">README</div>
+        <div class="tree-file" data-scroll="about-bg">profile.md</div>
+        <div class="tree-file" data-scroll="about-edu">education.md</div>
+        <div class="tree-file" data-scroll="about-exp">experience.md</div>
+        <div class="tree-file" data-scroll="about-skills">capabilities.md</div>
+        <div class="tree-file" data-scroll="about-certs">credentials.md</div>
+        <div class="tree-file" data-scroll="about-contact">contact.md</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content">
+    <section id="about-hero" class="hero rv">
+      <div class="hero-left">
+        <span class="eyebrow solo">Paddi Studio · 关于我</span>
+        <h1>万<span class="grad">建伟</span></h1>
+        <p class="role">网站与移动端开发者 · 产品架构实践者</p>
+        <p class="lede">Hi，我是 Paddi / JewwyWan。我的工作从需求定义开始，延伸到交互、前后端、移动端、部署和持续迭代。</p>
+        <div class="hero-cta"><a href="./contact.html" class="btn pri">联系我</a><a href="./portfolio.html" class="btn ghost">查看作品集</a></div>
+      </div>
+      <div class="win">
+        <div class="win-bar"><div class="traffic"><span class="r"></span><span class="y"></span><span class="g"></span></div><span class="win-title">about · bash</span></div>
+        <div class="term" id="terminal-output"></div>
+      </div>
+    </section>
+
+    <section id="about-bg" class="rv">
+      <div class="section-head"><span class="eyebrow">PROFILE</span><h2>我在做什么</h2><span class="head-line"></span></div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>我关注一件产品如何从模糊想法变成可使用、可维护、可继续迭代的系统。日常工作覆盖 <b>网站前后端、Android 应用、接口与部署</b>，同时承担产品目标拆解、信息架构和技术路径设计。</p>
+          <p>我正在东华大学学习人工智能。工程之外，我持续学习机器学习、深度学习、最优化与数据分析，并把这些知识用于产品原型、模型实验和数学建模。</p>
+          <p>Paddi Studio 是我的个人创作与工程实践入口；Paddi Ecosystem 则连接我持续维护的移动产品、服务端、官网和统一体验规范。</p>
+        </div>
+        <div class="stat-grid rv-stagger">
+          <div class="stat"><div class="num">3<small>/68</small></div><div class="lbl">截至第 4 学期专业排名</div></div>
+          <div class="stat"><div class="num">2<small>个月</small></div><div class="lbl">AI 全栈开发实习</div></div>
+          <div class="stat"><div class="num">4<small>款</small></div><div class="lbl">Paddi 公开测试产品</div></div>
+          <div class="stat"><div class="num">CET-6</div><div class="lbl">英语六级 515</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about-edu" class="rv">
+      <div class="section-head"><span class="eyebrow">EDUCATION</span><h2>教育经历</h2><span class="head-line"></span></div>
+      <div class="edu-card">
+        <div class="edu-period">2024.08 — 至今</div>
+        <div class="edu-main">
+          <h3>东华大学</h3>
+          <div class="edu-major">人工智能专业 · 本科</div>
+          <div class="edu-courses"><span class="chip">数据结构</span><span class="chip">计算机网络</span><span class="chip">机器学习</span><span class="chip">深度学习</span><span class="chip">最优化</span><span class="chip">大数据分析</span><span class="chip">Android / Linux</span></div>
+        </div>
+        <div class="edu-gpa"><div class="v">3<small>/68</small></div><div class="rank">第 1—4 学期</div></div>
+      </div>
+    </section>
+
+    <section id="about-exp" class="rv">
+      <div class="section-head"><span class="eyebrow">EXPERIENCE</span><h2>实践经历</h2><span class="head-line"></span></div>
+      <div class="timeline">
+        <article class="tl-item">
+          <div class="tl-period">2026.07.07 — 2026.09.05</div>
+          <div class="tl-head"><h3>上海申比芯人工智能科技有限公司</h3><span class="role-tag">AI 全栈开发实习生</span></div>
+          <div class="tl-org">网站、App 与大语言模型应用研发</div>
+          <p class="tl-gain">参与网站与移动端产品的前后端功能设计开发、接口联调和功能测试；加入技术方案讨论与文档整理，并积累了从开发、部署到验收交接的完整工程经验。</p>
+        </article>
+        <article class="tl-item">
+          <div class="tl-period">2026.09 — 至今</div>
+          <div class="tl-head"><h3>Paddi Studio / Paddi Ecosystem</h3><span class="role-tag">独立开发与产品架构</span></div>
+          <div class="tl-org">个人产品、基础设施与品牌体验</div>
+          <p class="tl-gain">持续建设网站、Android 客户端、后端服务、扫描处理与公开产品入口；维护命名、视觉、组件、交互、发布和回滚规则，让多个项目在同一产品体系中协作演进。</p>
+        </article>
+        <article class="tl-item">
+          <div class="tl-period">2025.07 — 至今</div>
+          <div class="tl-head"><h3>教学与知识表达</h3><span class="role-tag">讲师 / 私人家教</span></div>
+          <div class="tl-org">课程讲解、学习路径与一对一辅导</div>
+          <p class="tl-gain">先后参与教育机构教学与私人家教，在持续讲解和反馈中训练结构化表达、任务拆分与面向不同基础的沟通能力。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about-skills" class="rv">
+      <div class="section-head"><span class="eyebrow">CAPABILITIES</span><h2>能力结构</h2><span class="head-line"></span></div>
+      <div class="skill-blocks">
+        <article class="skill-block"><h4>网站与服务端</h4><div class="cert-list">
+          <div class="cert"><div class="body"><div class="t">前端与响应式体验</div><div class="d">HTML、CSS、JavaScript、React / Next.js，兼顾桌面端、移动端与可访问性。</div></div></div>
+          <div class="cert"><div class="body"><div class="t">后端、数据与部署</div><div class="d">Node.js、REST / Socket.IO、PostgreSQL / SQLite、Docker、Nginx、DNS 与线上排障。</div></div></div>
+        </div></article>
+        <article class="skill-block"><h4>移动端与产品</h4><div class="cert-list">
+          <div class="cert"><div class="body"><div class="t">Android 应用开发</div><div class="d">Kotlin、Jetpack Compose、原生界面、账号与权限、签名构建、更新和多 ABI 交付。</div></div></div>
+          <div class="cert"><div class="body"><div class="t">产品与系统架构</div><div class="d">需求澄清、用户流程、信息架构、接口边界、迭代节奏与发布验收。</div></div></div>
+        </div></article>
+        <article class="skill-block"><h4>AI 与数据</h4><div class="cert-list">
+          <div class="cert"><div class="body"><div class="t">机器学习实践</div><div class="d">回归、聚类、PCA、GMM、KDE、图像分类与评估流程。</div></div></div>
+          <div class="cert"><div class="body"><div class="t">AI 应用工程</div><div class="d">模型接口、RAG / Agent 原型、知识库、模型行为验证与产品接入。</div></div></div>
+        </div></article>
+        <article class="skill-block"><h4>协作与交付</h4><div class="cert-list">
+          <div class="cert"><div class="body"><div class="t">工程协作</div><div class="d">Git、合并请求、CI、联调、测试记录、技术文档和交付清单。</div></div></div>
+          <div class="cert"><div class="body"><div class="t">跨角色推进</div><div class="d">在产品、设计、开发与验收之间建立同一套目标和证据。</div></div></div>
+        </div></article>
+      </div>
+    </section>
+
+    <section id="about-certs" class="rv">
+      <div class="section-head"><span class="eyebrow">CREDENTIALS</span><h2>证书与竞赛</h2><span class="head-line"></span></div>
+      <div class="skill-blocks">
+        <article class="skill-block"><div class="cert-list">
+          <div class="cert"><div class="body"><div class="t">第十七届全国大学生数学竞赛二等奖</div><div class="d">非数学 A 类 · 2025</div></div></div>
+          <div class="cert"><div class="body"><div class="t">第十七届上海市大学生数学竞赛二等奖</div><div class="d">非数学 A 类 · 2025</div></div></div>
+        </div></article>
+        <article class="skill-block"><div class="cert-list">
+          <div class="cert"><div class="body"><div class="t">NVIDIA 深度学习基础能力证书</div><div class="d">深度学习基础——理论与实践入门 · 2026</div></div></div>
+          <div class="cert"><div class="body"><div class="t">CET-4 573 / CET-6 515</div><div class="d">英语能力考试 · 2025</div></div></div>
+        </div></article>
+      </div>
+    </section>
+
+    <section id="about-contact" class="rv">
+      <div class="section-head"><span class="eyebrow">CONTACT</span><h2>联系我</h2><span class="head-line"></span></div>
+      <div class="contact-inline">
+        <a href="mailto:paddi520wan@gmail.com" class="plink">paddi520wan@gmail.com</a>
+        <a href="mailto:13576902848@139.com" class="plink">13576902848@139.com</a>
+        <a href="tel:+8613576902848" class="plink">+86 135 7690 2848</a>
+        <a href="https://github.com/JewwyWan" target="_blank" rel="noopener" class="plink">GitHub @JewwyWan</a>
+      </div>
+      <div style="margin-top:var(--sp-5)"><a href="./contact.html" class="btn ghost">查看二维码与完整联系方式 →</a></div>
+    </section>
+
+    <section id="back" class="rv" style="text-align:center;padding-bottom:var(--sp-8)">
+      <a href="./home.html" class="btn ghost">← 返回主页</a>
+      <div class="foot-sig" style="margin-top:var(--sp-5)">Paddi Studio · 万建伟 JewwyWan · Copyright</div>
+    </section>
+  </main>
+
+  <nav class="scrollnav">
+    <a href="#about-hero" data-id="about-hero" data-label="首页"></a>
+    <a href="#about-bg" data-id="about-bg" data-label="简介"></a>
+    <a href="#about-edu" data-id="about-edu" data-label="教育"></a>
+    <a href="#about-exp" data-id="about-exp" data-label="经历"></a>
+    <a href="#about-skills" data-id="about-skills" data-label="能力"></a>
+    <a href="#about-certs" data-id="about-certs" data-label="证书"></a>
+    <a href="#about-contact" data-id="about-contact" data-label="联系"></a>
+  </nav>
+  <div class="statusbar"><div class="sb-item">UTF-8</div><div class="sb-item">LF</div><div class="sb-item">main</div><div class="sb-spacer"></div><div class="sb-item">jewwywan.github.io/about</div></div>
+
+  <script src="./JS/copy.js?v=20260712e"></script>
+  <script src="./JS/i18n.js?v=20261010-personal"></script>
+  <script src="./JS/terminal.js?v=20261010-personal"></script>
+  <script src="./JS/main.js?v=20260721b"></script>
+  <script src="./JS/music.js?v=20260712e"></script>
+  <script src="./JS/nav.js?v=20260712e"></script>
+  <script src="./JS/ripple.js?v=20260721b"></script>
+</body>
+</html>

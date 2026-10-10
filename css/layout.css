@@ -1,0 +1,467 @@
+/* ============================================================
+   IDE chrome 框架布局
+   titlebar / tabstrip / rail / statusbar / scrollnav / progress
+   ============================================================ */
+
+/* ---------- 顶部阅读进度条 ---------- */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  z-index: 10000;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 8px var(--accent-glow);
+  transition: width .1s linear;
+}
+
+/* ---------- titlebar（顶栏 44px）---------- */
+.titlebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--h-title);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: 0 var(--sp-4);
+  background: var(--chrome);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--sub);
+}
+
+.titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+/* macOS 红绿灯 */
+.traffic {
+  display: flex;
+  gap: 7px;
+}
+.traffic span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+}
+.traffic .r { background: var(--red); }
+.traffic .y { background: var(--yellow); }
+.traffic .g { background: var(--green); }
+
+.titlebar-path {
+  color: var(--faint);
+  letter-spacing: .02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.titlebar-path b {
+  color: var(--sub);
+  font-weight: 500;
+}
+
+.titlebar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--faint);
+  font-size: .68rem;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+.titlebar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+/* 招聘状态胶囊 */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--r-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: .68rem;
+  letter-spacing: .02em;
+  border: 1px solid rgba(92, 140, 255, .2);
+}
+.status-pill .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+  animation: blink 2s var(--ease) infinite;
+}
+
+/* 主题切换 */
+.theme-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-sm);
+  display: grid;
+  place-items: center;
+  color: var(--sub);
+  transition: background var(--t) var(--ease), color var(--t) var(--ease);
+}
+.theme-btn:hover {
+  background: var(--surface2);
+  color: var(--ink);
+}
+.theme-btn svg { width: 15px; height: 15px; }
+
+/* 音乐切换按钮（IDE chrome 顶栏内，跨子页面共用） */
+.titlebar-music {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 9px;
+  border-radius: var(--r-sm);
+  color: var(--sub);
+  font-family: var(--mono);
+  font-size: .68rem;
+  transition: background var(--t) var(--ease), color var(--t) var(--ease);
+}
+.titlebar-music svg { width: 15px; height: 15px; }
+.titlebar-music:hover {
+  background: var(--surface2);
+  color: var(--ink);
+}
+.titlebar-music.playing {
+  color: var(--accent);
+}
+.titlebar-music.playing svg {
+  animation: titlebarNoteBounce .8s ease-in-out infinite alternate;
+}
+@keyframes titlebarNoteBounce {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-2px); }
+}
+
+/* ---------- tabstrip（标签页条 42px）---------- */
+.tabstrip {
+  position: fixed;
+  top: var(--h-title);
+  left: 0;
+  right: 0;
+  height: var(--h-tabs);
+  z-index: 999;
+  display: flex;
+  align-items: stretch;
+  background: var(--editor);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabstrip::-webkit-scrollbar { display: none; }
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-4);
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--sub);
+  background: transparent;
+  border-right: 1px solid var(--line);
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: background var(--t) var(--ease), color var(--t) var(--ease);
+}
+.tab:hover {
+  background: var(--surface);
+  color: var(--ink);
+}
+.tab.active {
+  background: var(--bg);
+  color: var(--ink);
+}
+.tab.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
+}
+.tab .dot-close {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--r-xs);
+  display: grid;
+  place-items: center;
+  color: var(--faint);
+  opacity: 0;
+  transition: opacity var(--t) var(--ease), background var(--t) var(--ease);
+}
+.tab:hover .dot-close,
+.tab.active .dot-close { opacity: 1; }
+.tab .dot-close:hover {
+  background: var(--surface2);
+  color: var(--ink);
+}
+.tab .file-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+}
+
+/* ---------- rail（左侧文件树侧栏）---------- */
+.rail {
+  position: fixed;
+  top: calc(var(--h-title) + var(--h-tabs));
+  left: 0;
+  bottom: var(--h-status);
+  width: var(--w-rail);
+  z-index: 900;
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+  padding: var(--sp-4) 0;
+}
+
+.rail-header {
+  padding: var(--sp-1) var(--sp-4) var(--sp-3);
+  font-family: var(--mono);
+  font-size: .66rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--faint);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tree { font-family: var(--mono); font-size: .76rem; }
+
+.tree-folder {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px var(--sp-4);
+  color: var(--sub);
+  cursor: pointer;
+  user-select: none;
+}
+.tree-folder .chev {
+  width: 10px;
+  height: 10px;
+  transition: transform var(--t) var(--ease);
+  color: var(--faint);
+}
+.tree-folder.open .chev { transform: rotate(90deg); }
+.tree-folder .ic { color: var(--accent); width: 14px; height: 14px; }
+
+.tree-children {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--t-hover) var(--ease);
+}
+.tree-folder.open + .tree-children { max-height: 400px; }
+
+.tree-file {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px var(--sp-4) 6px calc(var(--sp-4) + 18px);
+  color: var(--sub);
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: background var(--t) var(--ease), color var(--t) var(--ease),
+              border-color var(--t) var(--ease);
+}
+.tree-file:hover {
+  background: var(--surface);
+  color: var(--ink);
+}
+.tree-file.active {
+  background: var(--surface2);
+  color: var(--ink);
+  border-left-color: var(--accent);
+}
+.tree-file .ic {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.tree-file .ic-md { color: var(--t-b); }
+.tree-file .ic-py { color: var(--t-s); }
+.tree-file .ic-ts { color: var(--t-f); }
+.tree-file .ic-json { color: var(--t-n); }
+
+/* ---------- statusbar（底部状态栏 30px）---------- */
+.statusbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--h-status);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+  padding: 0 var(--sp-4);
+  background: linear-gradient(90deg, #2b52c9, var(--accent-2));
+  color: #fff;
+  font-family: var(--mono);
+  font-size: .66rem;
+  letter-spacing: .03em;
+}
+.statusbar .sb-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: .92;
+}
+.statusbar .sb-item svg { width: 11px; height: 11px; }
+.statusbar .sb-spacer { flex: 1; }
+
+/* ---------- scrollnav（右侧滚动点导航）---------- */
+.scrollnav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 800;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.scrollnav a {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--line2);
+  background: transparent;
+  transition: all var(--t-hover) var(--ease);
+}
+.scrollnav a::after {
+  content: attr(data-label);
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t) var(--ease), color var(--t) var(--ease);
+}
+.scrollnav a:hover { border-color: var(--accent); }
+.scrollnav a:hover::after { opacity: 1; color: var(--ink); }
+.scrollnav a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+.scrollnav a.active::after { opacity: 1; color: var(--accent); }
+
+/* ---------- 主内容区 ---------- */
+.content {
+  position: relative;
+  z-index: 2;
+  margin-left: var(--w-rail);
+  max-width: var(--maxw);
+  padding: 0 clamp(20px, 5vw, 52px);
+}
+.content section {
+  padding: clamp(40px, 7vh, 80px) 0;
+  border-bottom: 1px solid var(--line);
+}
+.content section:last-of-type { border-bottom: none; }
+
+/* ---------- 章节标题（带 01/02 counter）---------- */
+.section-head {
+  margin-bottom: var(--sp-6);
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-4);
+  counter-increment: sec;
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.eyebrow::before {
+  content: counter(sec, decimal-leading-zero);
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.section-head h2 {
+  font-size: clamp(1.85rem, 4.4vw, 2.95rem);
+  font-weight: 600;
+  letter-spacing: -.04em;
+  color: var(--ink);
+}
+.section-head .head-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  align-self: center;
+}
+
+/* content 用 counter 重置 */
+.content { counter-reset: sec; }
+
+/* ---------- 响应式：移动端隐藏 rail/简化 chrome ---------- */
+@media (max-width: 1280px) {
+  .titlebar-center { display: none; }
+  .titlebar-path { max-width: 28vw; }
+  .titlebar-right { gap: var(--sp-2); }
+}
+
+@media (max-width: 860px) {
+  :root {
+    --w-rail: 0px;
+  }
+  .rail { display: none; }
+  .content { margin-left: 0; }
+  .scrollnav { display: none; }
+  .titlebar-path { max-width: 24vw; }
+  .titlebar-right .status-pill { display: none; }
+  .tabstrip { font-size: .68rem; }
+  .statusbar .sb-hide-m { display: none; }
+}
+
+@media (max-width: 560px) {
+  .titlebar {
+    gap: var(--sp-2);
+    padding: 0 var(--sp-3);
+  }
+  .titlebar-path,
+  .titlebar-music .music-label { display: none; }
+  .titlebar-music { padding: 0 6px; }
+  .traffic span { width: 10px; height: 10px; }
+}
