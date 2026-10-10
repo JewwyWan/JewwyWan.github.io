@@ -2,6 +2,8 @@
 
 这是 Paddi Studio 的个人网站静态副本，定位为万建伟的个人介绍、作品集、开发站点和 Paddi Ecosystem。
 
+线上地址：<https://jewwywan.github.io/>
+
 ## 页面
 
 - index.html：欢迎页，播放品牌记忆动画视频
