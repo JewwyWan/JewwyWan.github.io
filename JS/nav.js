@@ -54,10 +54,10 @@ window.addEventListener('scroll', syncActive, { passive: true });
 window.addEventListener('load', syncActive);
 
 // ---------- 主题切换（深 / 浅）----------
-// 默认晨间模式（light）；若用户手动切换过，则用其保存的偏好
+// 默认暗色模式；若用户手动切换过，则用其保存的偏好
 const themeBtn = document.getElementById('themeBtn');
-const STORAGE_KEY = 'resume-theme';
-const DEFAULT_THEME = 'light';
+const STORAGE_KEY = 'resume-theme-v2';
+const DEFAULT_THEME = 'dark';
 const saved = localStorage.getItem(STORAGE_KEY) || DEFAULT_THEME;
 applyTheme(saved);
 

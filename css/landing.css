@@ -530,6 +530,17 @@ body.landing-body {
   animation: fadeUp .8s var(--ease) .65s forwards;
 }
 
+.landing-focus {
+  margin-top: 12px;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  opacity: 0;
+  animation: fadeUp .8s var(--ease) .8s forwards;
+}
+
+
 /* ---------- 高亮卡片（Paddi Ecosystem） ---------- */
 .landing-card.landing-card-highlight {
   background: linear-gradient(135deg, var(--accent-soft), rgba(124, 77, 255, .08));
@@ -755,5 +766,6 @@ body.landing-body {
   .landing-title,
   .landing-subtitle,
   .landing-tagline,
+  .landing-focus,
   .landing-nav { animation: none; opacity: 1; }
 }

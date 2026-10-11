@@ -8,7 +8,7 @@
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'resume-theme';
+  const STORAGE_KEY = 'resume-theme-v2';
   const root = document.documentElement;
 
   // ---- 主题切换 ----
@@ -20,7 +20,7 @@
     }
   }
 
-  const savedTheme = localStorage.getItem(STORAGE_KEY) || 'light';
+  const savedTheme = localStorage.getItem(STORAGE_KEY) || 'dark';
   applyTheme(savedTheme);
 
   const themeBtn = document.getElementById('fnThemeBtn');
